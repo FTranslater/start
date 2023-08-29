@@ -12,12 +12,14 @@ public class Main {
             }
         }
         if(k!=1){
-            System.out.println("неправильное колличество действий");
-            System.exit(0);
+            throw new IllegalArgumentException("неправильное колличество действий");
         }
         if (s.contains("+")) {
             String[] values= s.split("\\+");
             Integer[] numbers=solve(values);
+            if((numbers[0]<0)|(numbers[0]>10)|(numbers[1]<0)|(numbers[1]>10)){
+                throw new IllegalArgumentException();
+            }
             Integer result= numbers[0]+numbers[1];
             switch (numbers[2]){
                 case 0:
@@ -27,13 +29,16 @@ public class Main {
                     translation(result);
                     break;
                 case 2:
-                    System.out.println("числа в разных системах счисления");
+                    throw new IllegalArgumentException("числа в разных системах счисления");
             }
 
         }
         if (s.contains("-")) {
             String[] values= s.split("-");
             Integer[] numbers=solve(values);
+            if((numbers[0]<0)|(numbers[0]>10)|(numbers[1]<0)|(numbers[1]>10)){
+                throw new IllegalArgumentException();
+            }
             Integer result= numbers[0]-numbers[1];
             switch (numbers[2]){
                 case 0:
@@ -41,39 +46,40 @@ public class Main {
                     break;
                 case 1:
                     if(result<0){
-                        System.out.println("число отрицательное");
+                        throw new IllegalArgumentException("число отрицательное");
                     }
                     else{
                         translation(result);
                     }
                     break;
                 case 2:
-                    System.out.println("числа в разных системах счисления");
+                    throw new IllegalArgumentException("числа в разных системах счисления");
             }
         }
         if (s.contains("*")) {
             String[] values= s.split("\\*");
             Integer[] numbers=solve(values);
+            if((numbers[0]<0)|(numbers[0]>10)|(numbers[1]<0)|(numbers[1]>10)){
+                throw new IllegalArgumentException();
+            }
             Integer result= numbers[0]*numbers[1];
             switch (numbers[2]){
                 case 0:
                     System.out.print("="+result);
                     break;
                 case 1:
-                    if(result<0){
-                        System.out.println("число отрицательное");
-                    }
-                    else{
                         translation(result);
-                    }
                     break;
                 case 2:
-                    System.out.println("числа в разных системах счисления");
+                    throw new IllegalArgumentException("числа в разных системах счисления");
             }
         }
         if (s.contains("/")) {
             String[] values= s.split("/");
             Integer[] numbers=solve(values);
+            if((numbers[0]<0)|(numbers[0]>10)|(numbers[1]<0)|(numbers[1]>10)){
+                throw new IllegalArgumentException();
+            }
             Integer result= numbers[0]/numbers[1];
             switch (numbers[2]){
                 case 0:
@@ -83,7 +89,7 @@ public class Main {
                         translation(result);
                     break;
                 case 2:
-                    System.out.println("числа в разных системах счисления");
+                    throw new IllegalArgumentException("числа в разных системах счисления");
             }
         }
 
